@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript" src="script.js" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script> 
+        <title>WEB CAM</title>
+    </head>
+    <body onload="openSocket()">
+
+        <header>
+            <img src="logo_m.png" width="150px" alt="logo">
+            <nav>
+                <ul class="nav_links">
+                    <li>
+                        <span class="nav-item" style="color:#F2A900;font-size:1.2rem;">
+                        <i class="fa-solid fa-envelope"></i>&nbsp;lycee@carnus.fr</span>
+                    </li>
+                    <li>
+                        <span class="nav-item" style="color:#F2A900;font-size:1.2rem;">
+                        <i class="fa-solid fa-phone"></i>&nbsp;05 65 73 37 00</span>
+                    </li>
+            </nav>
+                <section class="cta">
+                    <div class="imgcirc" style="background-image: url('image.jpg'); background-position: 5% 65%; background-size: cover;">
+                    </div>
+                </section>
+            </ul>
+        </header>
+
+
+        <div id="wrapper">
+
+            <div id="leftcolumn">
+                <h3>BTS CIEL : 1ère année</h3>
+                <p>Les étudiants ne pourront pas aller en stage s'ils n'ont pas suivi la totalité de la formation à l'habilitation électrique.</p>
+                <h3>BTS SNIR-2 : Epreuves écrites</h3>
+                <p>15-16 mai 2024</p>
+            </div>
+
+            <div id="content">
+                <div id="status">
+                    La connexion a échoué. Peut-être que le port est indisponible.
+                </div>
+                <div style="text-align: center">
+                    <canvas id="msg" width="640" height="480" style="display:inline-block" />
+                </div>
+            </div>
+
+            <div id="rightcolumn">
+                <table>
+                    <tr>
+                        <td>
+                            <div class="footer-col1">
+                                <h4><i class="fa-solid fa-graduation-cap"></i> Ecole directe</h4>
+                                <div class="eqrcode"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>        
+        </div>
+
+
+        <footer class="footer">
+            Carnus Enseignement Supérieur - &#169; Prof. K.B. - 2024
+        </footer>
+
+        <script>
+            let eqrcode = new QRCode(document.querySelector(".eqrcode"),
+                {
+                    width: 148,
+                    height: 148,
+                    colorDark : "rgb(0,68,88)",
+                    colorLight : "#F2A900"
+                });
+            eqrcode.makeCode("https://www.ecoledirecte.com/login?cameFrom=%2FAccueil");
+        </script>
+
+
+    </body>
+</html>
