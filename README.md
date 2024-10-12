@@ -10,6 +10,18 @@
 ### Contact : [Mail](mailto:lycee@carnus.fr)
 ---
 
+<a id="LOG"></a>
+## <cite><font color="blue"> Logiciels et supports : </font></cite>
+
+[![C++ Arduino](https://img.shields.io/badge/C++-Arduino-teal)](https://docs.arduino.cc/)
+[![Développement Web](https://img.shields.io/badge/HTML-CSS-yellow)](https://www.w3.org/)
+[![PHP SQL](https://img.shields.io/badge/PHP-MySQL-8A2BE2)](https://www.php.net/)
+[![Python Versions](https://img.shields.io/badge/Python-3-blue)](https://www.python.org/)
+[![RPi](https://img.shields.io/badge/Paspberry%20Pi-red)](https://www.raspberrypi.com/)
+[![ESP32](https://img.shields.io/badge/ESP32-green)](https://www.espressif.com/en/products/socs/esp32)
+
+---
+
 ### Table des matières :
 
 * <a href="#PP">Présentation </a>
@@ -122,16 +134,6 @@ Les capteureurs de présence (caméra, détecteur de mouvement) permettront l’
 * Approfondir les connaissances en programmation et en réseaux
 
 
-<a id="LOG"></a>
-## <cite><font color="blue"> Logiciels et supports : </font></cite>
-
-[![C++ Arduino](https://img.shields.io/badge/C++-Arduino-teal)](https://docs.arduino.cc/)
-[![Développement Web](https://img.shields.io/badge/HTML-CSS-yellow)](https://www.w3.org/)
-[![PHP SQL](https://img.shields.io/badge/PHP-MySQL-8A2BE2)](https://www.php.net/)
-[![Python Versions](https://img.shields.io/badge/Python-3-blue)](https://www.python.org/)
-[![RPi](https://img.shields.io/badge/Paspberry%20Pi-red)](https://www.raspberrypi.com/)
-[![ESP32](https://img.shields.io/badge/ESP32-green)](https://www.espressif.com/en/products/socs/esp32)
-
 ---
 
 <a id="PDL"></a>
@@ -142,6 +144,7 @@ Les capteureurs de présence (caméra, détecteur de mouvement) permettront l’
 ### Exemples d’étapes :
 - Exigences, Analyse, Conception, Mise en œuvre (implémentation), Test
 - Besoin/Faisabilité, Élaboration, Fabrication, Transition/Test
+
 
 
 
