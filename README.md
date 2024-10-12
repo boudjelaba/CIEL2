@@ -24,6 +24,7 @@
 
 ### Table des matières :
 
+* <a href="#LOG">Logiciels et supports</a>
 * <a href="#PP">Présentation </a>
 * <a href="#CC">Cahier des charges et expression du besoin</a>
 * <a href="#RT">Répartition des tâches </a>
@@ -31,8 +32,6 @@
     * <a href="#MP2">Mini-Projet 2 </a>
 * <a href="#PR">Prérequis</a>
 * <a href="#OB">Objectifs </a>
-* <a href="#LOG">Logiciels et supports</a>
-
 * <a href="#PDL">Processus de développement logiciel </a>
     * <a href="#PDLE">Exemples d’étapes</a>
 
@@ -144,7 +143,3 @@ Les capteureurs de présence (caméra, détecteur de mouvement) permettront l’
 ### Exemples d’étapes :
 - Exigences, Analyse, Conception, Mise en œuvre (implémentation), Test
 - Besoin/Faisabilité, Élaboration, Fabrication, Transition/Test
-
-
-
-
