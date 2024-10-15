@@ -1,0 +1,646 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fmodern\fcharset0 Courier-Bold;\f1\fmodern\fcharset0 Courier;\f2\fmodern\fcharset0 Courier-Oblique;
+\f3\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red1\green31\blue103;\red0\green0\blue0;\red3\green45\blue153;
+\red0\green0\blue233;\red251\green2\blue7;\red251\green2\blue7;\red33\green255\blue255;\red3\green45\blue153;
+}
+{\*\expandedcolortbl;;\cssrgb\c0\c18185\c48021;\cssrgb\c0\c0\c0;\cssrgb\c0\c25950\c66514;
+\cssrgb\c0\c0\c93333;\cssrgb\c100000\c14913\c0;\cssrgb\c100000\c14913\c0;\cssrgb\c0\c100000\c100000;\cssrgb\c0\c25950\c66514;
+}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid401\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid5}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww24300\viewh13620\viewkind0
+\deftab720
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b\fs38 \cf2 \expnd0\expndtw0\kerning0
+PowerShell ISE
+\f1\b0 , est l'\'e9diteur int\'e9gr\'e9 \'e0 Windows, il contient notamment l'aide int\'e9gr\'e9, l'auto-compl\'e9tion ainsi qu'une console PowerShell. De base et sans configuration particuli\'e8re, il vous permettra de b\'e9n\'e9ficier d'un environnement simple et pr\'e9configur\'e9 pour d\'e9buter avec PowerShell.\
+
+\f0\b Visual Studio Code
+\f1\b0 .\
+\pard\pardeftab720\partightenfactor0
+\cf4 Une commande PowerShell suit la convention de nommage suivante : 
+\f0\b Verbe-Nom
+\f1\b0 .\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 Get-Command\
+\
+Get-Command *Service
+\f1\b0 \
+\
+
+\f0\b Get-Help Get-Service\
+\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0 \cf0 Pour obtenir la strat\'e9gie actuellement appliqu\'e9e sur votre machine, ex\'e9cutez la commande suivante :\
+\pard\pardeftab720\partightenfactor0
+\cf0 Get-ExecutionPolicy\
+\
+\
+Pour pouvoir ex\'e9cuter votre script, basculer la politique sur la valeur "
+\f2\i Unrestricted
+\f1\i0 " comme ceci :\
+\
+Set-ExecutionPolicy Unrestricted\
+\
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://www.it-connect.fr/comment-creer-son-premier-script-powershell/"}}{\fldrslt 
+\f3\fs36 \cf5 \ul \ulc5 Comment cr\'e9er son premier script PowerShell ?}}\
+\
+====================================================\
+\
+Import-CSV -Path "Fichier1.csv" -Delimiter ";"\
+\
+\
+Import-CSV -Path "Fichier1.csv" -Delimiter ";" | Select-Object Unit\'e9\
+\
+\
+Si le fichier CSV ne contient pas d\'92en-t\'eate :\
+Import-CSV -Path "Fichier2.csv" -Delimiter ";" -Header Titre1\
+Il importera seulement la 1\'e8re colonne et elle sera nomm\'e9e \'ab\'a0Titre1\'a0\'bb.\
+\
+\
+\
+Affecter le contenu \'e0 une variable :\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 $CSV = Import-CSV -Path "Fichier1.csv" -Delimiter ";"
+\f1\b0 \
+\
+Pour afficher le contenu :\
+
+\f0\b $CSV
+\f1\b0 \
+\
+
+\f0\b \cf6 Foreach($Ligne in $CSV)\{\
+   Write-Host "Le composant $($Ligne.Composant) a la valeur $($Ligne.Valeur)"\
+\}
+\f1\b0 \cf0 \
+\
+\
+Transf\'e9rer les donn\'e9es du dossier source vers le dossier destination.\
+$CSV = Import-CSV -Path "Power_Shell -Delimiter ";"\
+\
+Foreach($Ligne in $CSV)\{\
+  Write-Host "Donn\'e9es transf\'e9r\'e9es de $($Ligne.DossierSource) vers $($Ligne.DossierDestination)"\
+  Move-Item -Path "$($Ligne.DossierSource)\\*" -Destination "$($Ligne.DossierDestination)"\
+\}\
+\
+\
+\
+\
+\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 Pour manipuler les services Windows avec PowerShell, on peut utiliser plusieurs commandes pr\'e9sentes dans le module "
+\f0\b Microsoft.PowerShell.Management
+\f1\b0 " int\'e9gr\'e9 nativement dans Windows :\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0
+\f0\b \cf0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Get-Service 
+\f1\b0 : lister les services Windows\
+\ls1\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+New-Service
+\f1\b0  : cr\'e9er un nouveau service\
+\ls1\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Remove-Service
+\f1\b0  : supprimer un service\
+\ls1\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Set-Service
+\f1\b0  : modifier la configuration d'un service existant\
+\ls1\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Restart-Service
+\f1\b0  : red\'e9marrer un service\
+\ls1\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Suspend-Service
+\f1\b0  : suspendre un service\
+\ls1\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Resume-Service
+\f1\b0  : reprendre un service (suspendu)\
+\ls1\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Start-Service
+\f1\b0  : d\'e9marrer un service\
+\ls1\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Stop-Service 
+\f1\b0 : arr\'eater un service
+\f3\fs36 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs38 \cf0 \
+\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 Gr\'e2ce \'e0 Where-Object, on peut filtrer cette sortie. Par exemple, non peut lister uniquement les services en cours d'ex\'e9cution :\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 Get-Service | Where-Object \{ $_.Status -eq "Running" \}
+\f1\b0 \
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 \
+Par ailleurs, on peut effectuer une recherche d'un service \'e0 partir d'un mot cl\'e9. Ceci est pratique quand vous recherchez un service, mais que vous avez oubli\'e9 le nom exact. Ici, on va obtenir la liste de tous les services dont le nom d'affichage contient le mot cl\'e9 "pare-feu".\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 Get-Service | Where-Object \{ $_.DisplayName -like "*pare-feu*" \}
+\f1\b0 \
+\
+\
+\
+\
+\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 On va modifier la configuration du service "T\'e9l\'e9copie" de Windows (Fax), car il n\'92est plus utilis\'e9, donc on n\'92affecte pas le bon fonctionnement du syst\'e8me en cas de mauvaise manipulation.\
+On peut modifier le type de d\'e9marrage de service. Actuellement, il est en type de d\'e9marrage "
+\f0\b Manuel
+\f1\b0 ", on va le 
+\f0\b d\'e9sactiver
+\f1\b0 . Il y a plusieurs valeurs possibles : 
+\f0\b Automatic, Boot, Disabled, Manual, System
+\f1\b0 . On doit ex\'e9cuter une console PowerShell en tant qu'administrateur pour ex\'e9cuter la commande ci-dessous, car elle n\'e9cessite une \'e9l\'e9vation de privil\'e8ges.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 Set-Service -Name Fax -StartupType Disabled
+\f1\b0 \
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 \
+On pourrait m\'eame changer le nom d'affichage de ce service. Ceci permettrait d'utiliser le nom d'affichage "
+\f0\b T\'e9l\'e9copie (Fax)
+\f1\b0 " \'e0 la place de "
+\f0\b T\'e9l\'e9copie
+\f1\b0 ". De la m\'eame fa\'e7on, avec le param\'e8tre "
+\f0\b -Description
+\f1\b0 ", on peut modifier la description de ce service.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 Set-Service -Name Fax -DisplayName "T\'e9l\'e9copie (Fax)"
+\f1\b0 \
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 \
+\'c0
+\f0\b  
+\f1\b0 chaque fois, on identifie le service \'e0 modifier avec le param\'e8tre "
+\f0\b -Name
+\f1\b0 ".\
+De plus, on peut sp\'e9cifier le param\'e8tre "
+\f0\b -PassThru
+\f1\b0 ", qu\'92on retrouve sur diff\'e9rentes commandes. Il est pratique, car il affiche dans la console l'objet cr\'e9\'e9, modifi\'e9 ou affect\'e9 par la commande pr\'e9c\'e9dente, alors que par d\'e9faut, cette commande ne retourne pas son r\'e9sultat.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 Set-Service -Name Fax -DisplayName "T\'e9l\'e9copie (Fax)" -PassThru
+\f1\b0 \
+\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 \'c0 chaque fois, on peut utiliser le param\'e8tre "
+\f0\b -Name
+\f1\b0 " ou "
+\f0\b -DisplayName
+\f1\b0 " pour agir sur le service, selon l'information dont on dispose.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0
+\f0\b \cf0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+D\'e9marrer un service :
+\f1\b0 \
+\pard\pardeftab720\partightenfactor0
+\cf0 Start-Service -Name <Nom du service>\
+Start-Service -DisplayName <Nom d'affichage du service>\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls3\ilvl0
+\f0\b \cf0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Red\'e9marrer un service :
+\f1\b0 \
+\pard\pardeftab720\partightenfactor0
+\cf0 Restart-Service -Name <Nom du service>\
+Restart-Service -DisplayName <Nom d'affichage du service>\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls4\ilvl0
+\f0\b \cf0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Arr\'eater un service :
+\f1\b0 \
+\pard\pardeftab720\partightenfactor0
+\cf0 Stop-Service -Name <Nom du service>\
+Stop-Service -DisplayName <Nom d'affichage du service>\
+\
+\
+\
+\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 Commande \'e0 ex\'e9cuter pour cr\'e9er le dossier "\cf5 \ul \ulc5 PowerShell\cf0 \ulnone " sous "C:TEMP" :\
+\pard\pardeftab720\partightenfactor0
+\cf0 New-Item -Path "\cf7 C:\\TEMP\\\cf0 " -Name "\cf7 PowerShell\cf0 " -ItemType \cf7 Directory\cf0 \
+\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 On peut faire plus court en int\'e9grant le nom du dossier directement dans le chemin.\
+\pard\pardeftab720\partightenfactor0
+\cf0 New-Item -Path "\cf7 C:\\TEMP\\PowerShell\cf0 " -ItemType \cf7 Directory\cf0 \
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 \
+Si on souhaite 
+\f0\b cr\'e9er un dossier dans l'emplacement courant
+\f1\b0 , il n'est pas utile de saisir le chemin du r\'e9pertoire actuel.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf9 New-Item -Name "PowerShell" -ItemType Directory
+\f1\b0 \cf0 \
+\
+\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 Plut\'f4t que de saisir plusieurs fois la commande New-Item, on peut sp\'e9cifier tous les chemins et noms des r\'e9pertoires \'e0 cr\'e9er au niveau du param\'e8tre "-Path". Pour cr\'e9er les r\'e9pertoires "PowerShell1", "PowerShell2" et "PowerShell3" \'e0 la racine de "C:\\TEMP", cela donne :\
+\pard\pardeftab720\partightenfactor0
+\cf0 New-Item -Path "\cf7 C:\\TEMP\\PowerShell1\cf0 ","\cf7 C:\\TEMP\\PowerShell2\cf0 ","\cf7 C:\\TEMP\\PowerShell3\cf0 " -Itemtype Directory\
+\
+\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 Cr\'e9er une liste de dossiers en s'appuyant sur les donn\'e9es d'un fichier CSV. Ici, un fichier CSV avec un seul en-t\'eate nomm\'e9 "Username". L'objectif est simple : cr\'e9er un dossier par utilisateur, en prenant la valeur de "Username" comme nom de dossier, au sein de "C:\\TEMP\\PowerShell".\
+Voici le contenu du fichier "Username.csv" :\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf6 Username
+\f1\b0 \
+Charles\
+Etudiant\
+Carnus\
+Prof\cf0 \
+\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 On commence par importer le fichier CSV :\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 $Username = Import-CSV -Path "C:\\TEMP\\Username.csv"
+\f1\b0 \
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 Puis, on boucle sur le contenu du fichier CSV avec "\cf5 \ul ForEach"\cf0 \ulnone  de fa\'e7on \'e0 cr\'e9er un r\'e9pertoire par nom d'utilisateur. Chaque ligne du fichier CSV sera trait\'e9e gr\'e2ce \'e0 la lecture de la variable "$Username".\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 $Username | foreach \{ New-Item -Path "C:\\TEMP\\PowerShell\\" -Name $_.UserName -ItemType Directory \}
+\f1\b0 \
+\
+\
+\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 L'exemple ci-dessous va permettre de cr\'e9er les dossiers "Documents", "T\'e9l\'e9chargements" et "Priv\'e9" dans le dossier racine de chaque utilisateur (\'e0 partir de la liste de noms du fichier CSV).\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 $Dossiers = (\
+   "Documents",\
+   "T\'e9l\'e9chargements",\
+   "Priv\'e9"\
+)
+\f1\b0 \
+\
+
+\f0\b Import-CSV -Path "C:\\TEMP\\Username.csv" | foreach \{\
+\
+   $Chemin = "C:\\TEMP\\PowerShell\\$($_.UserName)"\
+   $Dossiers | Foreach \{ New-Item -Path $Chemin -Name $_ -ItemType Directory \}\
+\}
+\f1\b0 \
+\
+\
+\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 "
+\f0\b Get-ComputerInfo
+\f1\b0 " peut \'eatre utilis\'e9 pour r\'e9cup\'e9rer des informations g\'e9n\'e9rales sur l'ordinateur local. Il va retourner des informations diverses et vari\'e9es sur le syst\'e8me d'exploitation, le mat\'e9riel, les param\'e8tres r\'e9gionaux, les param\'e8tres syst\'e8me ou encore sur le BIOS. Il peut rendre bien des services.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 Get-ComputerInfo
+\f1\b0 \
+\
+\
+\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 On peut lister l'ensemble des fonctionnalit\'e9s facultatives disponibles \'e0 l'aide de la commande "
+\f0\b Get-WindowsOptionalFeature
+\f1\b0 ". Le fait de pr\'e9ciser le param\'e8tre "
+\f0\b -Online
+\f1\b0 " signifie que nous ciblons l'image Windows en ligne, c'est-\'e0-dire celle ex\'e9cut\'e9e sur la machine en cours d'ex\'e9cution.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 Get-WindowsOptionalFeature -Online | Format-Table FeatureName, State
+\f1\b0 \
+\
+\
+Cette commande permet de lister les processus actifs sur une machine.\
+
+\f0\b Get-Process
+\f1\b0 \
+\
+
+\f0\b Get-Process -IncludeUserName
+\f1\b0 \
+\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 Avec la commande initiale (sans "
+\f0\b -IncludeUserName
+\f1\b0 "), la valeur est en octet. Ainsi, pour obtenir 
+\f0\b la liste de tous les processus qui consomment au minimum 100 Mo de RAM
+\f1\b0 , nous utiliserons la valeur "
+\f0\b 100000000
+\f1\b0 ".\
+\pard\pardeftab720\partightenfactor0
+\cf0 Get-Process | Where-Object \{ $_.WorkingSet -ge 100000000 \}\
+\
+Get-Process -Name "chrome" -IncludeUserName\
+\
+\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 On va chercher \'e0 arr\'eater tous les processus associ\'e9s au navigateur "
+\f0\b Microsoft Edge
+\f1\b0 ". On peut lister ces processus avec "
+\f0\b Get-Process
+\f1\b0 " :\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 Get-Process "msedge"
+\f1\b0 \
+\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 Puis, on peut envoyer la liste de processus \'e0 "
+\f0\b Stop-Process
+\f1\b0 " via le pipeline. Ceci va tuer imm\'e9diatement tous les processus, donc cette commande est puissante, mais peut aussi \'eatre dangereuse.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 Get-Process "msedge" | Stop-Process
+\f1\b0 \
+\
+Puis :\
+\
+
+\f0\b Get-Process "msedge"\
+\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0 \cf0 PowerShell propose une commande nomm\'e9 "
+\f0\b Get-HotFix
+\f1\b0 " qui permet d'obtenir la liste des correctifs install\'e9s sur la machine locale, en s'appuyant sur la classe 
+\f0\b WMI "Win32_QuickFixEngineering
+\f1\b0 ". On peut l'utiliser de cette fa\'e7on afin d'obtenir une liste des correctifs, class\'e9s par date d'installation (du plus r\'e9cent au plus ancien) :\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 Get-HotFix | Sort-Object -Property InstalledOn -Descending
+\f1\b0 \
+\
+\
+\
+\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b \cf0 Obtenir la liste des interfaces r\'e9seau\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0 \cf0 Avant de pouvoir configurer une interface r\'e9seau sur une machine, on doit l'identifier. Pour cela, on peut utiliser la commande "
+\f0\b Get-Net-Adapter
+\f1\b0 ". Elle permet d'obtenir la liste des interfaces r\'e9seau d\'e9tect\'e9es par Windows et visible aussi via la console "
+\f0\b Centre R\'e9seau et partage
+\f1\b0 ".\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 Get-NetAdapter
+\f1\b0 \
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 \
+Cette commande est capable de lister les 
+\f0\b adaptateurs Ethernet (RJ45 et Wi-Fi)
+\f1\b0 , mais aussi les 
+\f0\b adaptateurs Bluetooth
+\f1\b0 . La liste retourn\'e9e contient un ensemble de propri\'e9t\'e9s correspondantes \'e0 des caract\'e9ristiques de chaque interface r\'e9seau (nom, statut, \cf5 \ul adresse MAC\cf0 \ulnone , vitesse de connexion, etc.).
+\f3\fs36 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs38 \cf0 \
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 Pour obtenir la liste de toutes les interfaces r\'e9seau actives, nous pouvons filtrer la liste de cette fa\'e7on :\
+\pard\pardeftab720\partightenfactor0
+\cf0 Get-NetAdapter | Where-Object \{ $_.Status -eq "
+\f0\b Up
+\f1\b0 " \}\
+\
+\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b \cf0 Obtenir la configuration IP d'une interface\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0 \cf0 La commande "
+\f0\b Get-NetIPConfiguration
+\f1\b0 ", est une alternative \'e0 la commande MS-DOS "
+\f0\b ipconfig
+\f1\b0 ". Par d\'e9faut, cette commande permettra d'obtenir la configuration r\'e9seau TCP/IP de toutes les interfaces r\'e9seau de la machine, sauf celles non connect\'e9es. L'interface de boucle locale (loopback) est \'e9galement exclue.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 Get-NetIPConfiguration\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0 \cf0 Pour avoir des informations sur toutes les interfaces, peu importe le type et l'\'e9tat, le param\'e8tre "
+\f0\b -All
+\f1\b0 " doit \'eatre ajout\'e9.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 Get-NetIPConfiguration -All
+\f1\b0 \
+\
+Ou :\
+\
+Get-NetIPConfiguration -Detailed\
+\
+gip -Detailed\
+\
+\
+\
+\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 On peut utiliser "
+\f0\b Get-NetIPAddress
+\f1\b0 " qui pr\'e9sente l'avantage de lister toutes les adresses IP configur\'e9es sur la machine locale, en IPv4 et IPv6, ainsi que pour la boucle locale.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 Get-NetIPAddress
+\f1\b0 \
+\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 On peut m\'eame g\'e9n\'e9rer un tableau r\'e9capitulatif de cette fa\'e7on :\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 Get-NetIPAddress | Sort-Object -Property InterfaceAlias | Format-Table InterfaceAlias, IPAddress, AddressFamily
+\f1\b0 \
+\
+\
+\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b \cf0 Effectuer un test de connectivit\'e9\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0 \cf0 En g\'e9n\'e9ral, quand on veut effectuer un test de connectivit\'e9 r\'e9seau vers une machine ou un \'e9quipement, on utilise la commande 
+\f0\b \cf5 \ul ping
+\f1\b0 \cf0 \ulnone . Dans PowerShell la commande "
+\f0\b Test-Connection
+\f1\b0 "  va envoyer des paquets ICMP \'e0 destination de l'h\'f4te distant afin de tester la communication entre deux \'e9quipements.\
+Par exemple, on peut effectuer un ping vers l'adresse IP "
+\f0\b 1.1.1.1
+\f1\b0 " \'e0 l'aide de cette commande :\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 Test-Connection 1.1.1.1\
+\
+\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0 \cf0 Avec cette commande, on peut \'e9galement 
+\f0\b effectuer un ping vers plusieurs machines
+\f1\b0 . Cette commande va effectuer un ping vers chaque machine tour \'e0 tour. Il suffit de s\'e9parer les noms d'h\'f4tes par une virgule.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 Test-Connection 1.1.1.1,8.8.8.8,google.fr
+\f1\b0 \
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 \
+De plus, le param\'e8tre "
+\f0\b -Count
+\f1\b0 " permet de pr\'e9ciser le nombre de ping \'e0 effectuer. Ainsi, on peut lui associer la valeur "
+\f0\b 1
+\f1\b0 " pour effectuer un test de ping tr\'e8s rapide vers un ensemble de machines.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 Test-Connection 1.1.1.1,8.8.8.8,google.fr -Count 1
+\f1\b0 \
+\
+\
+\
+\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b \cf0 Tester un port\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0 \cf0 Gr\'e2ce au cmdlet "
+\f0\b \cf5 \ul Test-NetConnection
+\f1\b0 \cf0 \ulnone " de PowerShell, on va pouvoir 
+\f0\b effectuer un test sur un port sp\'e9cifique (uniquement en TCP)
+\f1\b0 . Ceci permettra de d\'e9terminer 
+\f0\b si un port est ouvert ou non
+\f1\b0 , comme on peut le faire avec le client "
+\f0\b \cf5 \ul Telnet
+\f1\b0 \cf0 \ulnone ".\
+Pour utiliser la commande "
+\f0\b Test-NetConnection
+\f1\b0 ", on doit pr\'e9ciser deux param\'e8tres :\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls5\ilvl0
+\f0\b \cf0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+-ComputerName
+\f1\b0  : le nom ou l'adresse IP de la cible.\
+\ls5\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+-Port 
+\f1\b0 : le num\'e9ro de port \'e0 tester\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 \
+Si on souhaite tester l'h\'f4te "
+\f0\b google.fr
+\f1\b0 ", sur le port "
+\f0\b 443
+\f1\b0 ", associ\'e9 au protocole HTTPS et g\'e9n\'e9ralement utilis\'e9 par les serveurs Web, on doit ex\'e9cuter cette commande :\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 Test-NetConnection -ComputerName google.fr -Port 443
+\f1\b0 \
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 \
+On obtient une r\'e9ponse positive, signe que le port "
+\f0\b 443
+\f1\b0 " est ouvert sur cet h\'f4te. Ce n'est pas une surprise car on cible directement "
+\f0\b google.fr
+\f1\b0 ". On peut le v\'e9rifier gr\'e2ce \'e0 la propri\'e9t\'e9 "
+\f0\b TcpTestSucceeded
+\f1\b0 " dont la valeur est "
+\f0\b True
+\f1\b0 ", ce qui indique que le test a r\'e9ussi.
+\f3\fs36 \
+\
+\
+
+\f1\fs38 Pour effectuer un test sur le port "
+\f0\b 80
+\f1\b0 ", on peut pr\'e9ciser le param\'e8tre "
+\f0\b -CommonTCPPort"
+\f1\b0  avec la valeur "
+\f0\b HTTP
+\f1\b0 " :\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 Test-NetConnection -ComputerName 1.1.1.1 -CommonTCPPort HTTP
+\f1\b0 \
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 \
+Si on souhaite afficher la liste de tous les ports sur lesquels \'e9coute un serveur (ou un poste de travail), on peut utiliser la commande "
+\f0\b Get-NetTCPConnection
+\f1\b0 " de cette fa\'e7on :\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 Get-NetTCPConnection -State Listen\
+\
+\
+\
+\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0 \cf0 Get-Date\
+\
+Get-Date -Format "yyyyMMdd"\
+\
+Get-Date -Format "dd/MM/yyyy"\
+\
+Get-Date -Format "HH:mm"\
+\
+Get-Date -DisplayHint Time\
+\
+Get-Date -Format "MMMM"\
+\
+Get-Date -DisplayHint Date\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 On peut cr\'e9er un fichier, un dossier, ou tout autre \'e9l\'e9ment qui contiendra la date dans son nom. L'exemple suivant permettra de cr\'e9er un fichier dans "C:\\TEMP\\" dont le nom sera constitu\'e9 de la fa\'e7on suivante : 
+\f0\b Log_Date_Heure.txt
+\f1\b0 . Par exemple : Log_20241015_1435.txt. On peut aussi stocker cette information dans une variable et appeler la variable.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf0 New-Item -Path "C:\\TEMP\\Log_$(Get-Date -Format 'yyyyMMdd_HHmm').txt" -ItemType File
+\f1\b0 \
+\
+\
+}
