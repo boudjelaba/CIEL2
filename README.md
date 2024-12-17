@@ -1,9 +1,3 @@
-https://www.youtube.com/watch?v=B4jNttRvbpU
-
-https://www.youtube.com/watch?v=t52Bi-ZUZjA
-
-https://www.youtube.com/watch?v=FZgU7wtgMYY
-
 # CIEL2
 
 # ⬇️ <cite><font color="(0,68,88)">Mini-Projets CIEL-2</font></cite>
