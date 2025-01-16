@@ -1,3 +1,5 @@
+https://www.elektormagazine.fr/articles/micropython-pour-l-esp32-et-ses-copains-partie-1
+
 # CIEL2
 
 [![Développement Web](https://img.shields.io/badge/HTML-CSS-yellow)](https://www.w3.org/)
