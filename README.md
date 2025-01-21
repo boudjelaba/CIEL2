@@ -1,3 +1,10 @@
+```cmd
+git config --global color.diff auto
+git config --global color.status auto
+git config --global color.branch auto
+```
+
+
 https://www.elektormagazine.fr/articles/micropython-pour-l-esp32-et-ses-copains-partie-1
 
 # CIEL2
