@@ -7,9 +7,6 @@ git config --global color.branch auto
 
 # CIEL2
 
-[![Développement Web](https://img.shields.io/badge/HTML-CSS-yellow)](https://www.w3.org/)
-[![PHP SQL](https://img.shields.io/badge/PHP-MySQL-8A2BE2)](https://www.php.net/)
-
 
 
 # ⬇️ <cite><font color="(0,68,88)">CIEL-2 : Informatique</font></cite>
