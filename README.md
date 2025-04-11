@@ -1,3 +1,6 @@
+`a10fd8a212e47edf8d946f26fb4cdef8`
+
+
 ```cmd
 git config --global color.diff auto
 git config --global color.status auto
