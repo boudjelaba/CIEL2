@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f8f9fa;
+            margin: 40px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+        tr:first-child td, tr:first-child th {
+            background: #0078d7;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.1em;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        pre {
+            margin: 0;
+            font-family: 'Fira Mono', 'Consolas', monospace;
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        code {
+            background: #e9ecef;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        @media (max-width: 800px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            tr {
+                margin-bottom: 1em;
+            }
+            td {
+                border: none;
+                border-bottom: 1px solid #dee2e6;
+                position: relative;
+                padding-left: 50%;
+            }
+            td:before {
+                position: absolute;
+                left: 10px;
+                top: 10px;
+                white-space: nowrap;
+                font-weight: bold;
+            }
+        }
+    </style>
+</head>
+<body>
+    <table>
+    <tr>
+        <td>Catégorie</td>
+        <td>Action</td>
+        <td>Commande</td>
+        <td>Exemple</td>
+        <td>Notes</td>
+    </tr>
+    <tr>
+        <td>Navigation</td>
+        <td>Afficher dossier courant</td>
+        <td><pre>cd</pre></td>
+        <td><pre>cd</pre></td>
+        <td>Affiche chemin actuel</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Lister fichiers/dossiers</td>
+        <td><pre>dir</pre></td>
+        <td><pre>dir</pre></td>
+        <td><pre>/a</pre> pour fichiers cachés</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Aller dans un sous-dossier</td>
+        <td><pre>cd nom_dossier</pre></td>
+        <td><pre>cd Documents</pre></td>
+        <td>Utiliser guillemets si espaces</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Remonter d’un dossier</td>
+        <td><pre>cd ..</pre></td>
+        <td><pre>cd ..</pre></td>
+        <td>Retour dossier parent</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Aller à la racine du disque</td>
+        <td><pre>cd \</pre></td>
+        <td><pre>cd \</pre></td>
+        <td>Racine disque</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Effacer écran</td>
+        <td><pre>cls</pre></td>
+        <td><pre>cls</pre></td>
+        <td>Nettoyer la console</td>
+    </tr>
+    <tr>
+        <td>Gestion fichiers</td>
+        <td>Créer dossier</td>
+        <td><pre>mkdir nom_dossier</pre></td>
+        <td><pre>mkdir Projet</pre></td>
+        <td>Crée dossier</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Créer fichier vide</td>
+        <td><pre>type nul &gt; fichier.txt</pre><br><pre>echo. &gt; fichier.txt</pre></td>
+        <td><pre>type nul &gt; notes.txt</pre><br><pre>echo. &gt; notes.txt</pre></td>
+        <td>Fichier vide</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Supprimer fichier</td>
+        <td><pre>del fichier</pre></td>
+        <td><pre>del notes.txt</pre></td>
+        <td>Supprime fichier</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Supprimer dossier vide</td>
+        <td><pre>rmdir dossier</pre></td>
+        <td><pre>rmdir Projet</pre></td>
+        <td>Dossier vide</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Supprimer dossier + contenu</td>
+        <td><pre>rmdir /s /q dossier</pre></td>
+        <td><pre>rmdir /s /q Projet</pre></td>
+        <td>Suppression récursive forcée</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Renommer fichier/dossier</td>
+        <td><pre>ren ancien nouveau</pre></td>
+        <td><pre>ren notes.txt todo.txt</pre></td>
+        <td>Renommage</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Copier fichier</td>
+        <td><pre>copy source destination</pre></td>
+        <td><pre>copy notes.txt C:\Users\</pre></td>
+        <td>Copier fichier</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Déplacer fichier</td>
+        <td><pre>move source destination</pre></td>
+        <td><pre>move notes.txt C:\Users\</pre></td>
+        <td>Déplacer ou renommer fichier</td>
+    </tr>
+    <tr>
+        <td>Lecture &amp; redirections</td>
+        <td>Lire fichier</td>
+        <td><pre>type fichier.txt</pre></td>
+        <td><pre>type notes.txt</pre></td>
+        <td>Affiche contenu</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Rediriger sortie vers fichier</td>
+        <td><pre>commande &gt; fichier</pre></td>
+        <td><pre>echo Bonjour &gt; msg.txt</pre></td>
+        <td>Écrase contenu</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Ajouter sortie à fichier</td>
+        <td><pre>commande &gt;&gt; fichier</pre></td>
+        <td><pre>echo suite &gt;&gt; msg.txt</pre></td>
+        <td>Ajoute contenu</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Chaîner commandes (pipe)</td>
+        <td><pre>commande1 | commande2</pre></td>
+        <td><pre>type notes.txt | find "mot"</pre></td>
+        <td>Utilise le pipe <code>|</code></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Rechercher texte dans fichier</td>
+        <td><pre>type fichier | find "mot"</pre></td>
+        <td><pre>type notes.txt | find "Bonjour"</pre></td>
+        <td>Recherche "mot" dans fichier</td>
+    </tr>
+    <tr>
+        <td>Notions utiles</td>
+        <td>Afficher dossier parent</td>
+        <td><pre>cd ..</pre></td>
+        <td><pre>cd ..</pre></td>
+        <td>Dossier parent</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Afficher fichiers cachés</td>
+        <td><pre>dir /a</pre></td>
+        <td><pre>dir /a</pre></td>
+        <td>Inclut fichiers cachés</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Rendre fichier caché</td>
+        <td><pre>attrib +h fichier</pre></td>
+        <td><pre>attrib +h secret.txt</pre></td>
+        <td>Cacher fichier</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Rendre fichier visible</td>
+        <td><pre>attrib -h fichier</pre></td>
+        <td><pre>attrib -h secret.txt</pre></td>
+        <td>Montrer fichier caché</td>
+    </tr>
+</table>
+</body>
+</html>
