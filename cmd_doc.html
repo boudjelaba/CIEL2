@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>cmd_Resume.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="introduction-%C3%A0-linvite-de-commande">Introduction à l’invite de commande</h1>
+<h2 id="1-introduction">1. <strong>Introduction</strong></h2>
+<p>L’invite de commande (aussi appelée <strong>terminal</strong>, <strong>console</strong>, ou <strong>CLI</strong> pour <em>Command Line Interface</em>) est un outil qui permet de communiquer avec l’ordinateur en tapant des <strong>commandes</strong> textuelles, plutôt que d’utiliser une interface graphique (fenêtres, icônes, menus).</p>
+<p>Son utilisation :</p>
+<ul>
+<li>Automatiser des tâches (grâce à des scripts).</li>
+<li><strong>Indispensable</strong> dans de nombreux domaines : programmation, développement web, DevOps, cybersécurité, intelligence artificielle, etc.</li>
+<li>Certains outils <strong>ne fonctionnent que via la ligne de commande</strong> (Git, Docker, etc.).</li>
+<li><strong>Plus d’options</strong> que les interfaces graphiques.</li>
+<li><strong>Universelle</strong> : ce que vous apprenez ici fonctionne sur tous les systèmes (Windows, Linux, macOS) avec quelques différences.</li>
+</ul>
+<hr>
+<h3 id="exemple-simple">Exemple simple :</h3>
+<p>Quand on utilise une interface graphique pour aller dans un dossier :</p>
+<ul>
+<li>On ouvre l'explorateur</li>
+<li>On clique plusieurs fois...</li>
+</ul>
+<p>Avec la ligne de commande :</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> Documents/Projets/Exemple
+</div></code></pre>
+<p>→ Une seule ligne suffit.</p>
+<hr>
+<h2 id="2-premiers-pas-dans-linvite-de-commande">2. <strong>Premiers pas dans l’invite de commande</strong></h2>
+<ul>
+<li>
+<p>Ouvrir l'invite de commande :</p>
+<ul>
+<li>Windows : <code>cmd</code>, <code>PowerShell</code>, ou <code>Windows Terminal</code></li>
+<li>macOS / Linux : Terminal</li>
+</ul>
+</li>
+</ul>
+<p><strong>Structure d'une commande</strong></p>
+<p>Chaque commande suit en général cette <strong>structure</strong> :</p>
+<pre class="hljs"><code><div>commande [options] [arguments]
+</div></code></pre>
+<ul>
+<li><strong>commande</strong> : Le nom du programme ou outil (ex : <code>ls</code>, <code>cd</code>, <code>mkdir</code>)</li>
+<li><strong>option(s)</strong> : Paramètres précédés d’un $-$ ou <code>--</code> pour modifier le comportement</li>
+<li><strong>argument(s)</strong> : Ce sur quoi la commande agit (ex : un nom de fichier)</li>
+</ul>
+<h3 id="exemple">Exemple :</h3>
+<pre class="hljs"><code><div>ls -l /home/user/Documents
+</div></code></pre>
+<ul>
+<li><code>ls</code> = liste les fichiers</li>
+<li>$-$<code>l</code> = option pour afficher plus de détails</li>
+<li><code>/home/user/Documents</code> = chemin du dossier à afficher</li>
+</ul>
+<p><strong>Règles importantes :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Règle</th>
+<th>Explication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Les commandes sont <strong>sensibles à la casse</strong></td>
+<td><code>ls</code> ≠ <code>LS</code></td>
+</tr>
+<tr>
+<td>L’espace sépare les <strong>éléments</strong></td>
+<td><code>ls -l</code> (pas <code>ls-l</code>)</td>
+</tr>
+<tr>
+<td>On peut <strong>combiner des options</strong></td>
+<td><code>ls -la</code> = <code>ls -l -a</code></td>
+</tr>
+<tr>
+<td>Utiliser <code>Tab</code> pour l’autocomplétion</td>
+<td>Évite les fautes de frappe</td>
+</tr>
+<tr>
+<td>Utiliser les flèches ↑ ↓</td>
+<td>Pour naviguer dans l’historique des commandes</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="3-navigation-dans-le-syst%C3%A8me-de-fichiers">3. <strong>Navigation dans le système de fichiers</strong></h2>
+<h3 id="objectif">Objectif</h3>
+<p>Apprendre à se déplacer dans les dossiers du système via l'invite de commandes (<code>cmd</code>) sous Windows.</p>
+<ul>
+<li>
+<p><code>pwd</code> – Afficher le répertoire courant</p>
+</li>
+<li>
+<p><code>cd</code> – Changer de répertoire</p>
+<ul>
+<li><code>cd ..</code>, <code>cd ~</code>, <code>cd /path/to/folder</code></li>
+</ul>
+</li>
+<li>
+<p><code>ls</code> ou <code>dir</code> – Lister les fichiers</p>
+<ul>
+<li>Options : <code>ls -l</code>, <code>ls -a</code>, <code>ls -lh</code></li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Commande</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Afficher le dossier courant</td>
+<td><code>cd</code></td>
+<td><code>cd</code></td>
+</tr>
+<tr>
+<td>Lister les fichiers d’un dossier</td>
+<td><code>dir</code></td>
+<td><code>dir</code></td>
+</tr>
+<tr>
+<td>Aller dans un sous-dossier</td>
+<td><code>cd nom_du_dossier</code></td>
+<td><code>cd Documents</code></td>
+</tr>
+<tr>
+<td>Remonter d’un dossier</td>
+<td><code>cd ..</code></td>
+<td><code>cd ..</code></td>
+</tr>
+<tr>
+<td>Aller à la racine du disque</td>
+<td><code>cd \</code></td>
+<td><code>cd \</code></td>
+</tr>
+<tr>
+<td>Aller à un chemin complet</td>
+<td><code>cd chemin_complet</code></td>
+<td><code>cd C:\Users\Nom\Bureau</code></td>
+</tr>
+<tr>
+<td>Effacer l’écran</td>
+<td><code>cls</code></td>
+<td><code>cls</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="exemples-pratiques"><strong>Exemples pratiques</strong></h3>
+<h4 id="1-afficher-le-dossier-courant">1. Afficher le dossier courant</h4>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span>
+</div></code></pre>
+<p>Affiche le chemin du dossier dans lequel vous vous trouvez.</p>
+<hr>
+<h4 id="2-voir-le-contenu-du-dossier">2. Voir le contenu du dossier</h4>
+<pre class="hljs"><code><div><span class="hljs-built_in">dir</span>
+</div></code></pre>
+<p>Affiche la liste des fichiers et sous-dossiers.</p>
+<hr>
+<h4 id="3-aller-dans-un-dossier">3. Aller dans un dossier</h4>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> Bureau
+</div></code></pre>
+<p>Entre dans le dossier &quot;Bureau&quot; (s’il existe dans le dossier courant).</p>
+<blockquote>
+<p>Utilisez <code>Tab</code> pour compléter automatiquement le nom du dossier.</p>
+</blockquote>
+<hr>
+<h4 id="4-remonter-dun-niveau">4. Remonter d’un niveau</h4>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> ..
+</div></code></pre>
+<p>Revient dans le dossier parent.</p>
+<hr>
+<h4 id="5-aller-directement-dans-un-chemin-complet">5. Aller directement dans un chemin complet</h4>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> C:\Users\Etudiant\Documents
+</div></code></pre>
+<hr>
+<h3 id="remarques-importantes">Remarques importantes</h3>
+<ul>
+<li>Sous <code>cmd</code>, <strong>les chemins utilisent les antislashs (<code>\</code>)</strong>.</li>
+<li>Sous PowerShell, les deux <code>\</code> et <code>/</code> fonctionnent en général.</li>
+<li>Si un nom de dossier contient des <strong>espaces</strong>, on l’entoure de guillemets :</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> "Mes Documents"
+</div></code></pre>
+<hr>
+<h3 id="exercice">Exercice</h3>
+<ol>
+<li>Ouvrir une invite de commande</li>
+<li>Aller dans le dossier <code>Documents</code></li>
+<li>Créer un nouveau dossier depuis l’explorateur (<code>TestCLI</code>)</li>
+<li>Utiliser <code>cd</code> pour entrer dans <code>TestCLI</code></li>
+<li>Taper <code>cd ..</code> pour revenir à <code>Documents</code></li>
+<li>Taper <code>cls</code> pour effacer l'écran</li>
+</ol>
+<hr>
+<h2 id="4-gestion-des-fichiers"><strong>4. Gestion des fichiers</strong></h2>
+<h3 id="objectif">Objectif</h3>
+<p>Apprendre à créer, supprimer, renommer, copier et déplacer des <strong>fichiers</strong> et <strong>dossiers</strong> en ligne de commande (<code>cmd</code>) sous Windows.</p>
+<h3 id="commandes-de-base">Commandes de base</h3>
+<h4 id="cr%C3%A9er-un-dossier"><strong>Créer un dossier</strong></h4>
+<pre class="hljs"><code><div><span class="hljs-built_in">mkdir</span> nom_du_dossier
+</div></code></pre>
+<p>Crée un dossier vide.</p>
+<hr>
+<h4 id="cr%C3%A9er-un-fichier-vide"><strong>Créer un fichier vide</strong></h4>
+<pre class="hljs"><code><div><span class="hljs-built_in">type</span> <span class="hljs-built_in">nul</span> &gt; nom_du_fichier.txt
+</div></code></pre>
+<p>Crée un fichier vide.</p>
+<hr>
+<h4 id="supprimer-un-fichier"><strong>Supprimer un fichier</strong></h4>
+<pre class="hljs"><code><div><span class="hljs-built_in">del</span> nom_du_fichier
+</div></code></pre>
+<hr>
+<h4 id="supprimer-un-dossier"><strong>Supprimer un dossier</strong></h4>
+<pre class="hljs"><code><div><span class="hljs-built_in">rmdir</span> nom_du_dossier
+</div></code></pre>
+<p>Pour supprimer un dossier et tout son contenu :</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">rmdir</span> /s /q nom_du_dossier
+</div></code></pre>
+<hr>
+<h4 id="renommer-un-fichier-ou-un-dossier"><strong>Renommer un fichier ou un dossier</strong></h4>
+<pre class="hljs"><code><div><span class="hljs-built_in">ren</span> ancien_nom nouveau_nom
+</div></code></pre>
+<p><strong>Exemples :</strong></p>
+<pre class="hljs"><code><div><span class="hljs-built_in">ren</span> notes.txt todo.txt
+<span class="hljs-built_in">ren</span> DossierA DossierB
+</div></code></pre>
+<hr>
+<h4 id="copier-un-fichier"><strong>Copier un fichier</strong></h4>
+<pre class="hljs"><code><div><span class="hljs-built_in">copy</span> source destination
+</div></code></pre>
+<p><strong>Exemple :</strong></p>
+<pre class="hljs"><code><div><span class="hljs-built_in">copy</span> notes.txt C:\Users\Etudiant\Bureau\
+</div></code></pre>
+<hr>
+<h4 id="d%C3%A9placer-ou-renommer-un-fichier"><strong>Déplacer (ou renommer) un fichier</strong></h4>
+<pre class="hljs"><code><div><span class="hljs-built_in">move</span> source destination
+</div></code></pre>
+<p><strong>Exemple :</strong></p>
+<pre class="hljs"><code><div><span class="hljs-built_in">move</span> notes.txt C:\Users\Etudiant\Documents\
+</div></code></pre>
+<hr>
+<h3 id="astuces-utiles">Astuces utiles</h3>
+<table>
+<thead>
+<tr>
+<th>Astuce</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Créer plusieurs dossiers</td>
+<td><code>mkdir dossier1 dossier2</code></td>
+</tr>
+<tr>
+<td>Supprimer plusieurs fichiers</td>
+<td><code>del fichier1.txt fichier2.txt</code></td>
+</tr>
+<tr>
+<td>Utiliser <code>*</code></td>
+<td><code>del *.txt</code> → supprime tous les fichiers <code>.txt</code></td>
+</tr>
+<tr>
+<td>Espaces dans les noms</td>
+<td><code>mkdir &quot;Mon Dossier&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="5-lecture-de-fichiers-redirections-et-pipes"><strong>5. Lecture de fichiers, redirections et pipes</strong></h2>
+<h3 id="objectif">Objectif</h3>
+<p>Savoir <strong>lire le contenu d’un fichier texte</strong>, <strong>rediriger l’affichage vers un fichier</strong>, et <strong>chaîner des commandes (pipes)</strong>.</p>
+<hr>
+<h2 id="a-lire-le-contenu-dun-fichier">A. <strong>Lire le contenu d’un fichier</strong></h2>
+<h4 id="type"><code>type</code></h4>
+<p>Affiche le contenu d’un fichier texte dans le terminal.</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">type</span> nom_du_fichier.txt
+</div></code></pre>
+<blockquote>
+<p>Attention : affiche tout d’un coup, même pour de gros fichiers.</p>
+</blockquote>
+<hr>
+<h2 id="b-redirections-de-sortie">B. <strong>Redirections de sortie</strong></h2>
+<h3 id="rediriger-la-sortie-dune-commande-dans-un-fichier"><strong>Rediriger la sortie d’une commande dans un fichier</strong></h3>
+<h4 id="redirection-%C3%A9crase-le-fichier-si-existant"><code>&gt;</code> : redirection (écrase le fichier si existant)</h4>
+<pre class="hljs"><code><div><span class="hljs-built_in">echo</span> Bonjour &gt; message.txt
+</div></code></pre>
+<p>Crée (ou écrase) <code>message.txt</code> et y écrit &quot;Bonjour&quot;</p>
+<h4 id="redirection-ajoute-%C3%A0-la-fin-du-fichier"><code>&gt;&gt;</code> : redirection (ajoute à la fin du fichier)</h4>
+<pre class="hljs"><code><div><span class="hljs-built_in">echo</span> Encore une ligne &gt;&gt; message.txt
+</div></code></pre>
+<p>Ajoute la ligne sans effacer ce qui existe</p>
+<hr>
+<h2 id="c-utiliser-les-%22pipes%22">C. <strong>Utiliser les &quot;pipes&quot; (|)</strong></h2>
+<p>Le pipe permet de <strong>chaîner deux commandes</strong> : la sortie de la première devient l’entrée de la seconde.</p>
+<pre class="hljs"><code><div>commande1 | commande2
+</div></code></pre>
+<h3 id="exemple">Exemple :</h3>
+<pre class="hljs"><code><div><span class="hljs-built_in">type</span> message.txt | <span class="hljs-built_in">more</span>
+</div></code></pre>
+<p>Affiche le contenu page par page (utile pour les longs fichiers)</p>
+<hr>
+<h3 id="exemple-avec-find-recherche">Exemple avec <code>find</code> (recherche)</h3>
+<pre class="hljs"><code><div><span class="hljs-built_in">type</span> message.txt | <span class="hljs-built_in">find</span> "Bonjour"
+</div></code></pre>
+<p>Affiche uniquement les lignes contenant le mot &quot;Bonjour&quot;</p>
+<hr>
+<h3 id="r%C3%A9sum%C3%A9">Résumé</h3>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Commande</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lire un fichier</td>
+<td><code>type fichier.txt</code></td>
+</tr>
+<tr>
+<td>Écrire dans un fichier</td>
+<td><code>echo texte &gt; fichier.txt</code></td>
+</tr>
+<tr>
+<td>Ajouter à un fichier</td>
+<td><code>echo texte &gt;&gt; fichier.txt</code></td>
+</tr>
+<tr>
+<td>Lire un fichier par pages</td>
+<td><code>type fichier.txt \| more</code></td>
+</tr>
+<tr>
+<td>Chercher un mot dans un fichier</td>
+<td><code>type fichier.txt \| find &quot;mot&quot;</code></td>
+</tr>
+<tr>
+<td>Trier le contenu</td>
+<td><code>sort &lt; fichier.txt</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="6-notions-utiles-pour-bien-utiliser-linvite-de-commande"><strong>6. Notions utiles pour bien utiliser l’invite de commande</strong></h2>
+<h3 id="a-chemins-absolus-vs-relatifs">A. <strong>Chemins absolus vs relatifs</strong></h3>
+<p>Comprendre les chemins est <strong>essentiel</strong> pour naviguer et manipuler des fichiers correctement.</p>
+<h4 id="chemin-absolu"><strong>Chemin absolu</strong></h4>
+<p>Chemin <strong>complet</strong> depuis la racine du disque.</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> C:\Users\Etudiant\Documents\Cours
+</div></code></pre>
+<p>Le chemin commence par une <strong>lettre de disque</strong> (ex. <code>C:</code>).</p>
+<hr>
+<h4 id="chemin-relatif"><strong>Chemin relatif</strong></h4>
+<p>Chemin <strong>par rapport au dossier actuel</strong>.</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> Cours\TP1
+</div></code></pre>
+<p>Fonctionne si vous êtes déjà dans <code>Documents</code>.</p>
+<hr>
+<h4 id="commande-utile-pour-sy-retrouver">Commande utile pour s’y retrouver :</h4>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span>
+</div></code></pre>
+<p>Affiche le <strong>chemin courant</strong>.</p>
+<hr>
+<h3 id="b-les-dossiers-sp%C3%A9ciaux">B. <strong>Les dossiers spéciaux</strong></h3>
+<table>
+<thead>
+<tr>
+<th>Dossier</th>
+<th>Raccourci en <code>cmd</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dossier parent</td>
+<td><code>..</code></td>
+</tr>
+<tr>
+<td>Dossier courant</td>
+<td><code>.</code></td>
+</tr>
+<tr>
+<td>Racine du disque courant</td>
+<td><code>\</code></td>
+</tr>
+<tr>
+<td>Bureau (chemin absolu)</td>
+<td><code>C:\Users\NomUtilisateur\Desktop</code></td>
+</tr>
+</tbody>
+</table>
+<p>Exemple :</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> ..
+</div></code></pre>
+<p>→ Remonte d’un dossier.</p>
+<hr>
+<h3 id="c-fichiers-cach%C3%A9s">C. <strong>Fichiers cachés</strong></h3>
+<p>Sous Windows, certains fichiers sont <strong>&quot;cachés&quot;</strong> et ne s’affichent pas avec <code>dir</code> par défaut.</p>
+<h4 id="pour-les-voir">Pour les voir :</h4>
+<pre class="hljs"><code><div><span class="hljs-built_in">dir</span> /a
+</div></code></pre>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/a</code></td>
+<td>Affiche <strong>tous</strong> les fichiers</td>
+</tr>
+<tr>
+<td><code>/ah</code></td>
+<td>Affiche <strong>seulement</strong> les fichiers cachés</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Les fichiers cachés ont l’attribut <code>H</code> dans la colonne d'attributs.</p>
+</blockquote>
+<hr>
+<h3 id="d-attributs-et-permissions">D. <strong>Attributs et permissions</strong></h3>
+<p>Sous Windows, il existe des <strong>attributs de fichiers</strong> (lecture seule, caché, etc.) qu'on peut modifier avec la commande <code>attrib</code>.</p>
+<h4 id="exemple">Exemple :</h4>
+<pre class="hljs"><code><div><span class="hljs-built_in">attrib</span> +h fichier.txt
+</div></code></pre>
+<p>Rend le fichier <strong>caché</strong>.</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">attrib</span> -h fichier.txt
+</div></code></pre>
+<p>Rend le fichier <strong>visible</strong>.</p>
+<hr>
+<h3 id="exercice">Exercice</h3>
+<ol>
+<li>Naviguer jusqu’à le dossier <code>Documents</code></li>
+<li>Créer un fichier nommé <code>secret.txt</code></li>
+<li>Le rendre <strong>caché</strong> avec <code>attrib +h secret.txt</code></li>
+<li>Utiliser <code>dir</code> puis <code>dir /a</code> pour voir la différence</li>
+<li>Le réafficher avec <code>attrib -h secret.txt</code></li>
+</ol>
+<hr>
+<h2 id="7-exercices-pratiques"><strong>7. Exercices pratiques</strong></h2>
+<hr>
+<h3 id="objectif">Objectif</h3>
+<p>Mettre en pratique tout ce qui a été vu : navigation, création, manipulation de fichiers, redirections, pipes et affichage.</p>
+<hr>
+<h2 id="exercice-1-%E2%80%93-cr%C3%A9ation-et-navigation">Exercice 1 – Création et navigation</h2>
+<ol>
+<li>Ouvrir l’invite de commande.</li>
+<li>Aller sur le Bureau.</li>
+<li>Créer un dossier nommé <code>TP_CLI</code>.</li>
+<li>Entrer dans ce dossier.</li>
+<li>Créer un sous-dossier <code>Notes</code>.</li>
+</ol>
+<hr>
+<p><strong>Correction :</strong></p>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> Desktop
+<span class="hljs-built_in">mkdir</span> TP_CLI
+<span class="hljs-built_in">cd</span> TP_CLI
+<span class="hljs-built_in">mkdir</span> Notes
+</div></code></pre>
+<hr>
+<h2 id="exercice-2-%E2%80%93-fichiers-simples">Exercice 2 – Fichiers simples</h2>
+<ol>
+<li>Créer un fichier vide nommé <code>todo.txt</code> dans <code>TP_CLI</code>.</li>
+<li>Écrire la ligne &quot;Réviser la ligne de commande&quot; dedans.</li>
+<li>Ajouter ensuite une deuxième ligne : &quot;Faire les exercices&quot;.</li>
+<li>Afficher le contenu du fichier.</li>
+</ol>
+<hr>
+<p><strong>Correction :</strong></p>
+<pre class="hljs"><code><div><span class="hljs-built_in">type</span> <span class="hljs-built_in">nul</span> &gt; todo.txt
+<span class="hljs-built_in">echo</span> Réviser la ligne de commande &gt; todo.txt
+<span class="hljs-built_in">echo</span> Faire les exercices &gt;&gt; todo.txt
+<span class="hljs-built_in">type</span> todo.txt
+</div></code></pre>
+<hr>
+<h2 id="exercice-3-%E2%80%93-redirections-et-affichage">Exercice 3 – Redirections et affichage</h2>
+<ol>
+<li>Créer un fichier nommé <code>liste.txt</code> avec 5 lignes de texte (utilise <code>echo</code>).</li>
+<li>Afficher uniquement les lignes contenant le mot &quot;ligne&quot;.</li>
+<li>Afficher le fichier page par page.</li>
+</ol>
+<hr>
+<p><strong>Correction :</strong></p>
+<pre class="hljs"><code><div><span class="hljs-built_in">echo</span> ligne <span class="hljs-number">1</span> &gt; liste.txt
+<span class="hljs-built_in">echo</span> ligne <span class="hljs-number">2</span> &gt;&gt; liste.txt
+<span class="hljs-built_in">echo</span> autre contenu &gt;&gt; liste.txt
+<span class="hljs-built_in">echo</span> ligne <span class="hljs-number">4</span> &gt;&gt; liste.txt
+<span class="hljs-built_in">echo</span> encore autre chose &gt;&gt; liste.txt
+
+<span class="hljs-built_in">type</span> liste.txt | <span class="hljs-built_in">find</span> "ligne"
+<span class="hljs-built_in">type</span> liste.txt | <span class="hljs-built_in">more</span>
+</div></code></pre>
+<hr>
+<h2 id="exercice-4-%E2%80%93-copie-d%C3%A9placement-et-suppression">Exercice 4 – Copie, déplacement et suppression</h2>
+<ol>
+<li>Copier <code>todo.txt</code> dans le dossier <code>Notes</code>.</li>
+<li>Renommer le fichier <code>todo.txt</code> en <code>taches.txt</code>.</li>
+<li>Supprimer le fichier <code>liste.txt</code>.</li>
+<li>Supprimer le dossier <code>Notes</code> (même s’il contient un fichier).</li>
+</ol>
+<hr>
+<p><strong>Correction :</strong></p>
+<pre class="hljs"><code><div><span class="hljs-built_in">copy</span> todo.txt Notes\
+<span class="hljs-built_in">ren</span> todo.txt taches.txt
+<span class="hljs-built_in">del</span> liste.txt
+<span class="hljs-built_in">rmdir</span> /s /q Notes
+</div></code></pre>
+<hr>
+<h2 id="exercice-5-%E2%80%93-fichier-cach%C3%A9">Exercice 5 – Fichier caché</h2>
+<ol>
+<li>Créer un fichier <code>secret.txt</code>.</li>
+<li>Le rendre invisible avec la commande <code>attrib</code>.</li>
+<li>Vérifier qu’il n’est plus visible avec <code>dir</code>.</li>
+<li>Le réafficher avec <code>attrib -h</code>.</li>
+</ol>
+<hr>
+<p><strong>Correction :</strong></p>
+<pre class="hljs"><code><div><span class="hljs-built_in">type</span> <span class="hljs-built_in">nul</span> &gt; secret.txt
+<span class="hljs-built_in">attrib</span> +h secret.txt
+<span class="hljs-built_in">dir</span>
+<span class="hljs-built_in">dir</span> /a
+<span class="hljs-built_in">attrib</span> -h secret.txt
+</div></code></pre>
+<hr>
+<h3 id="tp-synth%C3%A8se">TP synthèse</h3>
+<p><strong>Objectif</strong> : Réaliser toute une séquence en autonomie, du début à la fin.</p>
+<hr>
+<ol>
+<li>Sur le Bureau, créer un dossier <code>Projet_CLI</code>.</li>
+<li>Dans ce dossier, créer deux sous-dossiers : <code>Docs</code> et <code>Sources</code>.</li>
+<li>Créer un fichier <code>plan.txt</code> dans <code>Docs</code> contenant 3 lignes décrivant un projet fictif.</li>
+<li>Copier ce fichier dans <code>Sources</code>.</li>
+<li>Renommer <code>plan.txt</code> en <code>plan_final.txt</code> dans <code>Sources</code>.</li>
+<li>Supprimer le fichier d’origine dans <code>Docs</code>.</li>
+<li>Afficher le contenu de <code>plan_final.txt</code> page par page.</li>
+<li>Rendre ce fichier caché.</li>
+<li>Vérifier sa disparition puis sa réapparition.</li>
+</ol>
+<hr>
+<p><strong>Correction :</strong></p>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> Desktop
+<span class="hljs-built_in">mkdir</span> Projet_CLI
+<span class="hljs-built_in">cd</span> Projet_CLI
+<span class="hljs-built_in">mkdir</span> Docs Sources
+
+<span class="hljs-built_in">echo</span> Étape <span class="hljs-number">1</span> &gt; Docs\plan.txt
+<span class="hljs-built_in">echo</span> Étape <span class="hljs-number">2</span> &gt;&gt; Docs\plan.txt
+<span class="hljs-built_in">echo</span> Étape <span class="hljs-number">3</span> &gt;&gt; Docs\plan.txt
+
+<span class="hljs-built_in">copy</span> Docs\plan.txt Sources\
+<span class="hljs-built_in">ren</span> Sources\plan.txt plan_final.txt
+<span class="hljs-built_in">del</span> Docs\plan.txt
+
+<span class="hljs-built_in">type</span> Sources\plan_final.txt | <span class="hljs-built_in">more</span>
+<span class="hljs-built_in">attrib</span> +h Sources\plan_final.txt
+<span class="hljs-built_in">dir</span> Sources
+<span class="hljs-built_in">dir</span> Sources /a
+<span class="hljs-built_in">attrib</span> -h Sources\plan_final.txt
+</div></code></pre>
+
+</body>
+</html>
