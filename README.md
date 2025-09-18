@@ -220,3 +220,86 @@ pip install -r requirements.txt
 ```
 
 ---
+# Suppression d'utilisateurs sur RPI
+
+## Remarques (importantes)
+
+* Ne **supprimez jamais l'utilisateur root**.
+* Ne supprimez pas l'utilisateur avec lequel vous êtes connecté avant d’avoir **créé et testé un nouveau compte avec droits sudo**.
+
+---
+
+## Étapes pour supprimer tous les utilisateurs sauf `root`
+
+### 1. Créer un nouvel utilisateur
+
+Connectez-vous avec l’utilisateur actuel (par défaut c’est souvent `pi`), puis dans le terminal :
+
+```bash
+sudo adduser ciel
+```
+
+Suivez les instructions pour lui attribuer un mot de passe.
+
+### 2. Ajouter l'utilisateur au groupe sudo (pour avoir les droits administrateurs)
+
+```bash
+sudo usermod -aG sudo ciel
+```
+
+> Vous pouvez vérifier avec `groups ciel`.
+
+---
+
+### 3. Se connecter avec le nouvel utilisateur
+
+Avant de supprimer les autres, **ouvrez une nouvelle session (terminal ou SSH)** avec le nouvel utilisateur pour vérifier que tout fonctionne :
+
+```bash
+su - ciel
+```
+
+Vérifiez que vous avez bien les droits sudo :
+
+```bash
+sudo whoami
+```
+
+Cela doit renvoyer :
+
+```bash
+root
+```
+
+---
+
+### 4. Lister tous les utilisateurs normaux
+
+Commande pour lister tous les comptes avec UID ≥ 1000 (utilisateurs normaux) :
+
+```bash
+awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd
+```
+
+Cela vous donnera une liste comme :
+
+```text
+pi
+autreutilisateur
+ciel
+```
+
+---
+
+### 5. Supprimer les autres utilisateurs
+
+**Ne supprimez pas** `ciel`. Par exemple, pour supprimer l’utilisateur `pi` :
+
+```bash
+sudo deluser --remove-home pi
+```
+
+Faites de même pour chaque utilisateur à supprimer (sauf votre nouveau compte).
+
+---
+---
