@@ -78,3 +78,145 @@ try:
 except KeyboardInterrupt:
     print("\nArrêt du programme.")
 ```
+
+---
+---
+
+
+## Environnements virtuels Python sur Raspberry Pi
+
+Utiliser des **environnements virtuels (venv)** est **la meilleure pratique** pour isoler les projets et éviter les problèmes de droits, de dépendances ou de conflits entre bibliothèques.
+
+---
+
+### Objectif
+
+Créer un environnement Python isolé pour travailler avec `requests`, `flask`, etc., **sans interférer avec le système global**.
+
+---
+
+### Prérequis
+
+Python 3 est préinstallé sur les Raspberry Pi. Assurez-vous que les paquets suivants sont là :
+
+```bash
+sudo apt update
+sudo apt install python3 python3-venv python3-pip -y
+```
+
+*Remarques*
+
+* Si le Raspberry Pi a **une installation propre** et **récente**, il est possible que ces paquets soient déjà présents.
+* Pour **vérifier** :
+
+```bash
+python3 -m venv --help
+```
+
+Si cette commande fonctionne sans erreur, cela signifie que `python3-venv` est installé.
+
+De même pour `pip` :
+
+```bash
+pip3 --version
+```
+
+Cela permettra de confirmer si `pip` est déjà installé.
+
+---
+
+### Création d’un environnement virtuel
+
+1. **Se placer dans le dossier du projet** :
+
+   ```bash
+   mkdir ~/monprojet
+   cd ~/monprojet
+   ```
+
+2. **Créer un environnement virtuel** :
+
+   ```bash
+   python3 -m venv env
+   ```
+
+   Cela crée un sous-dossier `env/` contenant une installation isolée de Python.
+
+3. **Activer l’environnement** :
+
+   ```bash
+   source env/bin/activate
+   ```
+
+   Le prompt change, par exemple : `(env) pi@raspberrypi:~/monprojet $`
+
+---
+
+## Installer les bibliothèques (dans le venv)
+
+Par exemple :
+
+```bash
+pip install flask requests
+```
+
+Les paquets sont installés **localement dans le projet**, pas globalement.
+
+---
+
+## Pour sortir de l’environnement :
+
+```bash
+deactivate
+```
+
+Cela revient au Python système, sans rien casser.
+
+---
+
+## Vérifier que tout fonctionne
+
+Test avec Flask :
+
+```python
+# app.py
+from flask import Flask
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    return "Bonjour depuis Flask sur le RPi !"
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
+```
+
+Puis lancer :
+
+```bash
+python app.py
+```
+
+Et accéder depuis un navigateur à l’adresse :
+`http://<ip-du-RPi>:5000`
+
+---
+
+## Notes : pour éviter les erreurs fréquentes
+
+* Toujours **activer le venv** avant de faire `pip install` ou `python`.
+* Ajouter un fichier `requirements.txt` au projet :
+
+```bash
+pip freeze > requirements.txt
+```
+
+> On reviendra sur ça dans les prochains cours
+
+Et pour restaurer sur un autre RPi ou utilisateur :
+
+```bash
+pip install -r requirements.txt
+```
+
+---
