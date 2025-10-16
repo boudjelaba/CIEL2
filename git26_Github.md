@@ -1,4 +1,4 @@
-# Git distant avec GitHub (collaboration en ligne)
+# Git distant avec GitHub (collaboration en ligne) -- V0
 
 Git est conçu pour la collaboration, et les dépôts distants (ou "remotes") sont essentiels pour partager votre travail et collaborer avec d'autres. GitHub est une plateforme populaire qui héberge des dépôts Git.
 
