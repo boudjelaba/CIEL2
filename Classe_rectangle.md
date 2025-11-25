@@ -1,5 +1,8 @@
 # **TP – Programmation Orientée Objet : Rectangle & Carré**
 
+[![C CPP](https://img.shields.io/badge/C-C++-7b68ee)](https://www.cpp.org/)
+[![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-2a52be)](https://www.vscode.fr/)
+
 ## Sommaire
 
 * Partie 0 : notion de classe + constructeur + méthodes
