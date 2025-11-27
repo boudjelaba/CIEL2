@@ -303,3 +303,196 @@ Faites de même pour chaque utilisateur à supprimer (sauf votre nouveau compte)
 
 ---
 ---
+
+
+## Solution de l'exercice (Bibliothèque Arduino)
+
+1. `Led.h`
+2. `Led.cpp`
+3. Exemple `ProgTestLed.ino`
+4. `keywords.txt`
+5. `library.properties`
+
+---
+
+### Fichier `Led.h`
+
+```cpp
+#ifndef LED_H
+#define LED_H
+#include "Arduino.h"
+
+class Led
+{
+    public:
+        Led(int pin);
+        void ledOn();
+        void ledOff();
+        void ledClign(int T, int N);
+        void ledChange();
+        bool ledEtat();
+    private:
+        int _pin;
+        bool _etat;
+};
+
+#endif
+```
+
+* `_pin` : numéro de la broche
+* `_etat` : état actuel de la LED (`true` = allumée, `false` = éteinte)
+
+---
+
+### Fichier `Led.cpp`
+
+```cpp
+#include "Arduino.h"
+#include "Led.h"
+
+Led::Led(int pin)
+{
+    pinMode(pin, OUTPUT);
+    _pin = pin;
+    _etat = false; // LED éteinte par défaut
+}
+
+void Led::ledOn()
+{
+    digitalWrite(_pin, HIGH);
+    _etat = true;
+}
+
+void Led::ledOff()
+{
+    digitalWrite(_pin, LOW);
+    _etat = false;
+}
+
+void Led::ledClign(int T, int N)
+{
+    for(int i = 0; i < N; i++)
+    {
+        ledOn();
+        delay(T / 2);
+        ledOff();
+        delay(T / 2);
+    }
+}
+
+void Led::ledChange()
+{
+    if (_etat) {
+        ledOff();
+    } else {
+        ledOn();
+    }
+}
+
+bool Led::ledEtat()
+{
+    return _etat;
+}
+```
+
+* Les méthodes `ledClign` et `ledChange` utilisent `ledOn()` et `ledOff()`.
+* `ledEtat()` retourne simplement l’état actuel de la LED.
+
+---
+
+### Fichier exemple `ProgTestLed.ino`
+
+```cpp
+#include <Led.h>
+
+Led maLed(13); // LED sur la broche 13
+
+void setup() {
+  Serial.begin(9600); // initialisation du moniteur série
+}
+
+void loop() {
+  Serial.println("Allumage LED");
+  maLed.ledOn();
+  delay(500);
+
+  Serial.println("Extinction LED");
+  maLed.ledOff();
+  delay(500);
+
+  Serial.println("Clignotement LED 5 fois, période 1000ms");
+  maLed.ledClign(1000, 5);
+  
+  Serial.println("Changement d'état LED");
+  maLed.ledChange();
+  delay(500);
+
+  Serial.print("État actuel de la LED : ");
+  Serial.println(maLed.ledEtat() ? "Allumée" : "Éteinte");
+  delay(1000);
+}
+```
+
+---
+
+### Fichier `keywords.txt`
+
+```
+#######################################
+# Syntax Coloring Map LED
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+Led KEYWORD1    Led
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+ledOn   KEYWORD2
+ledOff  KEYWORD2
+ledClign    KEYWORD2
+ledChange   KEYWORD2
+ledEtat KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+```
+
+* Permet la coloration syntaxique dans l’IDE Arduino.
+
+---
+
+### Fichier `library.properties`
+
+```
+name=Led
+version=1.0.0
+author=Kamal B., LTP Charles Carnus
+maintainer=LTP <carnuslab@carnus.fr>
+sentence=Library to control LEDs on Arduino boards.
+paragraph=This library allows you to turn LEDs on/off, toggle their state, and make them blink.
+category=Device Control
+url=https://www.carnus.fr/
+architectures=avr,megaavr,sam,samd,nrf52,stm32f4,mbed,mbed_nano,mbed_portenta,mbed_rp2040
+```
+
+* À placer dans le dossier principal de la librairie **Led**.
+
+---
+
+### Organisation finale du dossier `Led`
+
+```
+Arduino/Libraries/Led/
+│
+├── Led.h
+├── Led.cpp
+├── keywords.txt
+├── library.properties
+└── examples/
+    └── ProgTestLed/
+        └── ProgTestLed.ino
+```
