@@ -2,31 +2,35 @@ name: C++ CI
 
 on:
   push:
+    branches: [ "master" ]
   pull_request:
+    branches: [ "master" ]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Récupération du dépôt
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Installation de CMake
+      - name: Install CMake
         uses: lukka/get-cmake@v3.29.0
-      - name: Installer les dépendances de build
+
+      - name: Install build dependencies
         run: sudo apt-get update && sudo apt-get install -y build-essential
 
-      - name: Vérifier la version de CMake
+      - name: Show CMake version
         run: cmake --version
 
-      - name: Configuration du projet
+      - name: Configure (CMake)
         run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
 
-      - name: Compilation
+      - name: Build
         run: cmake --build build -- -j $(nproc)
 
-      - name: Exécuter les tests (si présents)
+      - name: Run tests
         run: ctest --test-dir build --output-on-failure || true
 
       - name: Upload build artifact
