@@ -1,0 +1,12 @@
+.DS_Store
+# Ignore build artifacts and executable
+/build/
+prog1
+
+# Object files
+*.o
+
+# CMake temporary files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
