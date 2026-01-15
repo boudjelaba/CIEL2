@@ -1,3 +1,39 @@
+```sql
+-- 1. Création de la base
+CREATE DATABASE IF NOT EXISTS gestion_interventions;
+USE gestion_interventions;
+
+--- 2. Création des tables
+CREATE TABLE CLIENT (
+    id_client INT PRIMARY KEY NOT NULL,
+    nom VARCHAR(50),
+    adresse VARCHAR(100),
+    telephone VARCHAR(15)
+);
+
+CREATE TABLE TECHNICIEN (
+    id_technicien INT PRIMARY KEY NOT NULL,
+    nom VARCHAR(50),
+    specialite VARCHAR(50)
+);
+
+CREATE TABLE INTERVENTION (
+    id_intervention INT PRIMARY KEY NOT NULL,
+    date_intervention DATE,
+    description VARCHAR(100),
+    duree INT,
+    id_client INT,
+    id_technicien INT,
+    FOREIGN KEY (id_client) REFERENCES CLIENT(id_client),
+    FOREIGN KEY (id_technicien) REFERENCES TECHNICIEN(id_technicien)
+);
+```
+
+
+
+
+---
+---
 
 ```cmd
 git config --global color.diff auto
