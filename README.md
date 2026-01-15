@@ -1,3 +1,50 @@
+```
+```markdown
+📦CO_GTB
+ ┣ 📂admin
+ ┃ ┣ 📂actions
+ ┃ ┃ ┗ 📜add_user.php
+ ┃ ┣ 📜admin_panel.php
+ ┃ ┗ 📜index.php
+ ┣ 📂config
+ ┃ ┣ 📜.htaccess
+ ┃ ┣ 📜auth.php
+ ┃ ┣ 📜db.php
+ ┃ ┗ 📜db.sample.php
+ ┣ 📂public
+ ┃ ┣ 📂assets
+ ┃ ┃ ┣ 📂css
+ ┃ ┃ ┃ ┗ 📜style.css
+ ┃ ┃ ┣ 📂img
+ ┃ ┃ ┣ 📂js
+ ┃ ┃ ┗ ┗ 📜script.js
+ ┃ ┣ 📂login
+ ┃ ┃ ┣ 📜login.php
+ ┃ ┃ ┣ 📜logout.php
+ ┃ ┃ ┗ 📜register.php
+ ┃ ┣ 📜dashboard.php
+ ┃ ┗ 📜index.php
+ ┣ 📂sql
+ ┃ ┣ 📜db.sample.sql
+ ┃ ┗ 📜db.sql
+ ┣ 📂views
+ ┃ ┣ 📜footer.php
+ ┃ ┣ 📜header.php
+ ┃ ┗ 📜sidebar.php
+ ┣ 📜.gitignore
+ ┣ 📜.htaccess
+ ┣ 📜generate_toc.py
+ ┣ 📜Git.md
+ ┣ 📜deploy.sh
+ ┣ 📜readme.md
+ ┗ 📜requirements.txt
+```
+```
+
+
+
+
+
 ```sql
 -- 1. Création de la base
 CREATE DATABASE IF NOT EXISTS gestion_interventions;
