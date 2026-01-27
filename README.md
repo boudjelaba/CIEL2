@@ -1,4 +1,61 @@
-```
+
+```sql
+CREATE DATABASE gestion_salles
+  DEFAULT CHARACTER SET utf8mb4
+  COLLATE utf8mb4_general_ci;
+
+USE gestion_salles;
+
+CREATE TABLE Salles (
+    id INT PRIMARY KEY,
+    nom_salle VARCHAR(50) NOT NULL,
+    batiment CHAR(1) NOT NULL,
+    capacite INT NOT NULL
+) ENGINE=InnoDB;
+
+CREATE TABLE Equipements (
+    id INT PRIMARY KEY,
+    nom_equipement VARCHAR(100) NOT NULL,
+    type VARCHAR(50) NOT NULL,
+    adresse_ip VARCHAR(15),
+    id_salle INT,
+    CONSTRAINT fk_equipements_salle
+        FOREIGN KEY (id_salle)
+        REFERENCES Salles(id)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE Techniciens (
+    id INT PRIMARY KEY,
+    nom_technicien VARCHAR(100) NOT NULL,
+    specialite VARCHAR(50),
+    id_salle_affectee INT,
+    CONSTRAINT fk_techniciens_salle
+        FOREIGN KEY (id_salle_affectee)
+        REFERENCES Salles(id)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+INSERT INTO Salles (id, nom_salle, batiment, capacite) VALUES
+(1, 'A101', 'A', 20),
+(2, 'B202', 'B', 15),
+(3, 'C303', 'C', 25);
+
+INSERT INTO Equipements (id, nom_equipement, type, adresse_ip, id_salle) VALUES
+(101, 'PC-Prof', 'Ordinateur', '192.168.1.1', 1),
+(102, 'Switch-Central', 'Switch', '192.168.1.254', 1),
+(103, 'Imprimante', 'Imprimante', '192.168.2.1', 2),
+(104, 'Routeur', 'Routeur', '192.168.1.253', 3);
+
+INSERT INTO Techniciens (id, nom_technicien, specialite, id_salle_affectee) VALUES
+(1, 'Jean Dupont', 'Réseau', 1),
+(2, 'Marie Martin', 'Matériel', 2),
+(3, 'Paul Durand', 'Sécurité', NULL);
+``` 
+
+
 ```markdown
 📦CO_GTB
  ┣ 📂admin
