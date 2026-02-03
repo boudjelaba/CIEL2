@@ -551,10 +551,10 @@ Justifier brièvement votre réponse.
 
 | Affirmation                   | Réponse | Justification attendue |
 | ----------------------------- | ------- | ---------------------- |
-| `-` signifie public           | ❌ Faux  | `-` = private         |
-| Méthode UML → fonction membre | ✔️ Vrai | Correspondance directe |
-| Relation UML → attribut       | ✔️ Vrai | Cas général            |
-| Constructeur a un type        | ❌ Faux  | Aucun type de retour  |
+| `-` signifie public           |  Faux  | `-` = private         |
+| Méthode UML → fonction membre |  Vrai | Correspondance directe |
+| Relation UML → attribut       |  Vrai | Cas général            |
+| Constructeur a un type        |  Faux  | Aucun type de retour  |
 
 ## Exercice 7 — Repérer les erreurs UML / C++
 
