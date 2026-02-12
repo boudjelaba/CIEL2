@@ -1,3 +1,21 @@
+```
+@startuml
+class Personne {
+  - nom : string
+  + Personne(nom : string)
+  + afficher() : void
+}
+
+class Etudiant {
+  - classe : string
+  + Etudiant(nom : string, classe : string)
+  + afficher() : void
+}
+
+Etudiant --|> Personne
+@enduml
+```
+
 
 ```sql
 CREATE DATABASE gestion_salles
