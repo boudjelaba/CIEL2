@@ -1,0 +1,50 @@
+#version: "3.9" # A commenter pour les versions Docker Compose v2
+
+services:
+  flask_api:
+    build: .
+    container_name: flask_api
+    ports:
+      - "5000:5000"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: students_db
+      POSTGRES_HOST: postgres_db
+    depends_on:
+      postgres_db:
+        condition: service_healthy
+    networks:
+      - frontend
+      - backend
+
+  postgres_db:
+    image: postgres:15
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: students_db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d students_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - backend
+
+  attacker:
+    image: debian:stable-slim
+    container_name: attacker
+    command: sleep infinity
+    networks:
+      - frontend
+
+volumes:
+  pgdata:
+
+networks:
+  frontend:
+  backend:
