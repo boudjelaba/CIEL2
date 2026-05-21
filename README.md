@@ -10,8 +10,52 @@
     Professeur - K. B.
 
 ### Contact : [Mail](mailto:lycee@carnus.fr)
+
 ---
 
+```python
+#!/usr/bin/env python3
+
+import os
+
+# Icônes visuelles
+DIR_ICON = "📁 "
+FILE_ICON = "📄 "
+
+def build_tree(path, prefix=""):
+    """
+    Affiche l'arborescence d'un dossier de manière récursive.
+    """
+
+    try:
+        entries = os.listdir(path)
+    except PermissionError:
+        print(prefix + "Accès refusé")
+        return
+
+    entries.sort()
+
+    for index, name in enumerate(entries):
+        full_path = os.path.join(path, name)
+        is_last = index == len(entries) - 1
+
+        connector = "└── " if is_last else "├── "
+
+        if os.path.isdir(full_path):
+            print(prefix + connector + DIR_ICON + name)
+            new_prefix = prefix + ("    " if is_last else "│   ")
+            build_tree(full_path, new_prefix)
+        else:
+            print(prefix + connector + FILE_ICON + name)
+
+
+if __name__ == "__main__":
+    path = input("Chemin (ou nom) du dossier à analyser : ")
+    print("\nStructure du dossier :\n")
+    build_tree(path)
+```
+
+---
 
 ### Création d’un environnement virtuel
 
