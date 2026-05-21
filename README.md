@@ -13,6 +13,79 @@
 
 ---
 
+### 2. Diagramme de séquence — Inscription (Register)
+
+```plantuml
+@startuml
+
+actor User
+
+participant API
+participant AuthService
+participant UserRepository
+participant PasswordUtil
+
+User -> API : POST /register
+
+API -> AuthService : register(data)
+
+AuthService -> UserRepository : findByEmail()
+
+UserRepository --> AuthService : null
+
+AuthService -> PasswordUtil : hash(password)
+
+PasswordUtil --> AuthService : hashed password
+
+AuthService -> UserRepository : create(user)
+
+UserRepository --> AuthService : user created
+
+AuthService --> API : success
+
+API --> User : 201 Created
+
+@enduml
+```
+
+### 3. Diagramme de séquence — Connexion (Login)
+
+```plantuml
+@startuml
+
+actor User
+
+participant Client
+participant API
+participant AuthService
+participant UserRepository
+participant JWT
+
+User -> Client : Enter credentials
+
+Client -> API : POST /login
+
+API -> AuthService : login(email,password)
+
+AuthService -> UserRepository : findByEmail()
+
+UserRepository --> AuthService : user
+
+AuthService -> AuthService : verifyPassword()
+
+AuthService -> JWT : generateToken()
+
+JWT --> AuthService : JWT token
+
+AuthService --> API : auth response
+
+API --> Client : 200 + token
+
+@enduml
+```
+
+---
+
 ```python
 #!/usr/bin/env python3
 
