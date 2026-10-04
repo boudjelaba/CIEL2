@@ -85,8 +85,6 @@ mysql -u user -p ma_base < sauvegarde.sql
 * `JOIN` définit le lien
 * `LEFT` / `RIGHT` définissent ce qu'on conserve
 * Une jointure = **1 `JOIN` + 1 `ON`**
-
----
-
 * N—N ⇒ table de liaison
 
+---
