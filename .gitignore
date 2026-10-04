@@ -1,0 +1,44 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Logs
+*.log
+
+# Fichiers temporaires
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# Environnement / secrets
+.env
+.env.*
+!.env.example
+
+# Dépendances
+node_modules/
+
+# Build / distributions
+dist/
+build/
+out/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# OS / IDE
+.idea/
